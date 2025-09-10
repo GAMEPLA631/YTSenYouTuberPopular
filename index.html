@@ -27,6 +27,23 @@
             background-clip: text;
             color: transparent;
         }
+        .verified-badge {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: #1DA1F2; /* Sýta modrá farba */
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .verified-badge svg {
+            fill: #fff;
+            width: 14px;
+            height: 14px;
+        }
     </style>
 </head>
 <body class="p-4 sm:p-8 flex items-center justify-center min-h-screen">
@@ -39,8 +56,15 @@
             </div>
             <h1 class="text-4xl sm:text-5xl font-extrabold mb-2">
                 Ahojte, ja som <span class="gradient-text">Kristian Stareček</span>!
+                <span class="verified-badge" title="Overený profil">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M9 16.2l-3.5-3.5a1 1 0 011.4-1.4l2.1 2.1 4.9-4.9a1 1 0 111.4 1.4L9 16.2z" fill="#fff"/>
+                        <circle cx="12" cy="12" r="11" stroke="#fff" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </span>
             </h1>
             <p class="text-xl sm:text-2xl text-neutral-400 font-medium">Youtuber, Spevák & DJ</p>
+            <p class="text-base text-neutral-400">35,2 milióna odberateľov <span class="text-xs text-neutral-500">(Poznámka: Tento údaj je ilustračný pre túto webovú stránku.)</span></p>
         </header>
 
         <!-- About Me Section -->
@@ -83,6 +107,8 @@
     </div>
 </body>
 </html>
+
+
 
 
 
