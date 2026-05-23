@@ -10,11 +10,12 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0c0c0e;
+            background-color: #0c0214;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.18) 0%, transparent 50%),
-                radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 60%);
+                radial-gradient(circle at 50% 15%, rgba(147, 51, 234, 0.45) 0%, transparent 65%),
+                radial-gradient(circle at 10% 85%, rgba(124, 58, 237, 0.35) 0%, transparent 55%),
+                radial-gradient(circle at 90% 45%, rgba(219, 39, 119, 0.25) 0%, transparent 60%),
+                linear-gradient(135deg, #070010 0%, #170030 50%, #030008 100%);
             background-attachment: fixed;
         }
         
@@ -30,14 +31,14 @@
             content: '';
             position: absolute;
             inset: -1px;
-            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            background: linear-gradient(135deg, #8b5cf6, #d946ef, #6366f1);
             border-radius: 1.5rem;
             z-index: -1;
-            opacity: 0.25;
+            opacity: 0.35;
             transition: opacity 0.3s ease;
         }
         .glow-border:hover::after {
-            opacity: 0.5;
+            opacity: 0.6;
         }
         
         .animate-pulse-slow {
@@ -48,11 +49,11 @@
             50% { opacity: .9; transform: scale(1.03); }
         }
 
-        /* Sklenený efekt */
+        /* Sklenený efekt s hlbokým fialovým nádychom */
         .glass-card {
-            background: rgba(20, 20, 25, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(22, 10, 41, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
         }
 
         /* Vlastný scrollbar pre vnútro karty v simulácii */
@@ -63,11 +64,11 @@
             background: transparent;
         }
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: rgba(168, 85, 247, 0.3);
+            background: rgba(168, 85, 247, 0.4);
             border-radius: 9999px;
         }
         .custom-scroll::-webkit-scrollbar-thumb:hover {
-            background: rgba(168, 85, 247, 0.5);
+            background: rgba(168, 85, 247, 0.6);
         }
     </style>
 </head>
@@ -271,19 +272,19 @@
                 btn.classList.add('text-zinc-400');
             });
 
-            // Simulácia presných rozmerov zariadení
+            // Simulácia presných rozmerov zariadení s plným fialovým pokrytím
             if (mode === 'mobile') {
                 btnMobile.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/20');
                 btnMobile.classList.remove('text-zinc-400');
                 
                 // Mobilné rozmery (iPhone 14 Pro / šírka ~390px)
                 wrapper.className = 'device-transition w-full max-w-[390px]';
-                innerFrame.className = 'device-transition w-full flex flex-col items-center drop-shadow-[0_25px_35px_rgba(0,0,0,0.85)]';
+                innerFrame.className = 'device-transition w-full flex flex-col items-center drop-shadow-[0_25px_35px_rgba(139,92,246,0.3)]';
                 mobileBar.classList.remove('hidden');
                 homeBar.classList.remove('hidden');
                 
-                // Karta sa prispeje mobilnému zobrazeniu v simulátore
-                profileCard.className = 'device-transition w-full bg-zinc-900/95 p-5 sm:p-6 border-x-8 border-zinc-800 overflow-y-auto max-h-[68vh] rounded-none custom-scroll';
+                // Karta sa prispôsobí mobilnému zobrazeniu a zachová si nádherný fialový sklenený vzhľad
+                profileCard.className = 'device-transition w-full bg-purple-950/70 backdrop-blur-2xl p-5 sm:p-6 border-x-8 border-zinc-800 overflow-y-auto max-h-[68vh] rounded-none custom-scroll';
             } 
             else if (mode === 'tablet') {
                 btnTablet.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/20');
@@ -296,7 +297,7 @@
                 homeBar.classList.add('hidden');
                 
                 // Tablet vzhľad
-                profileCard.className = 'device-transition glow-border w-full bg-zinc-900/85 backdrop-blur-xl p-8 rounded-3xl border border-zinc-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[80vh] custom-scroll';
+                profileCard.className = 'device-transition glow-border w-full bg-purple-950/60 backdrop-blur-2xl p-8 rounded-3xl border border-purple-900/50 shadow-[0_20px_50px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[80vh] custom-scroll';
             } 
             else { // desktop
                 btnDesktop.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/20');
@@ -309,11 +310,10 @@
                 homeBar.classList.add('hidden');
                 
                 // Široký počítačový vzhľad
-                profileCard.className = 'device-transition glow-border w-full bg-zinc-900/85 backdrop-blur-xl p-6 sm:p-10 md:p-12 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-zinc-800 overflow-y-auto max-h-[85vh] custom-scroll';
+                profileCard.className = 'device-transition glow-border w-full bg-purple-950/50 backdrop-blur-2xl p-6 sm:p-10 md:p-12 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-purple-900/40 overflow-y-auto max-h-[85vh] custom-scroll';
             }
         }
     </script>
 
 </body>
 </html>
-
