@@ -6,105 +6,165 @@
     <title>Kristian Stareček - Youtuber, Spevák & DJ</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎧</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #09090b;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
         }
-        .container {
-            max-width: 800px;
+        .glow-border {
+            position: relative;
         }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+            border-radius: 1.5rem;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
         }
-        .gradient-text {
-            background-image: linear-gradient(45deg, #FF6B6B, #FFCD68);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .glow-border:hover::after {
+            opacity: 0.6;
         }
-        .verified-badge {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background-color: #1DA1F2; /* Sýta modrá farba */
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 8px;
-            vertical-align: middle;
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        .verified-badge svg {
-            fill: #fff;
-            width: 14px;
-            height: 14px;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .8; transform: scale(1.02); }
         }
     </style>
 </head>
-<body class="p-4 sm:p-8 flex items-center justify-center min-h-screen">
-    <div class="container bg-neutral-800 p-6 sm:p-10 rounded-3xl shadow-2xl">
+<body class="p-4 sm:p-8 md:p-12 flex items-center justify-center min-h-screen text-zinc-100 selection:bg-purple-500 selection:text-white">
+
+    <div class="glow-border w-full max-w-3xl bg-zinc-900/85 backdrop-blur-xl p-6 sm:p-10 md:p-12 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-zinc-800">
+        
         <!-- Header Section -->
-        <header class="text-center mb-8">
-            <div class="flex items-center justify-center mb-4">
-                <!-- Profile Image Placeholder -->
-                <div class="profile-img rounded-full bg-neutral-700 flex items-center justify-center text-4xl font-bold border-4 border-neutral-600">KS</div>
+        <header class="text-center mb-10 relative">
+            <!-- Profilové foto / Avatar -->
+            <div class="flex items-center justify-center mb-6">
+                <div class="relative group">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                    <div class="relative w-36 h-36 rounded-full bg-zinc-950 flex items-center justify-center text-5xl font-extrabold border-4 border-zinc-800 text-transparent bg-clip-text bg-gradient-to-tr from-indigo-400 via-purple-400 to-pink-400 select-none shadow-inner">
+                        KS
+                    </div>
+                    <!-- Mini DJ/Music ikona v rohu profilovky -->
+                    <div class="absolute bottom-1 right-1 bg-purple-600 p-2 rounded-full border-2 border-zinc-900 shadow-lg">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-4xl sm:text-5xl font-extrabold mb-2">
-                Ahojte, ja som <span class="gradient-text">Kristian Stareček</span>!
-                <span class="verified-badge" title="Overený profil">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M9 16.2l-3.5-3.5a1 1 0 011.4-1.4l2.1 2.1 4.9-4.9a1 1 0 111.4 1.4L9 16.2z" fill="#fff"/>
-                        <circle cx="12" cy="12" r="11" stroke="#fff" stroke-width="1.5" fill="none"/>
+
+            <!-- Meno a Verified odznak -->
+            <h1 class="text-3xl sm:text-5xl font-black mb-3 tracking-tight flex items-center justify-center gap-2 flex-wrap">
+                Ahojte, ja som 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+                    Kristian Stareček
+                </span>
+                <span class="inline-flex items-center justify-center bg-blue-500 text-white rounded-full p-1 w-6 h-6 sm:w-7 sm:h-7 shadow-lg shadow-blue-500/30" title="Overený profil">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 111.414-1.414L9 10.586l3.293-3.293a1 1 0 111.414 1.414z"></path>
                     </svg>
                 </span>
             </h1>
-            <p class="text-xl sm:text-2xl text-neutral-400 font-medium">Youtuber, Spevák & DJ</p>
-            <p class="text-base text-neutral-400">39,2 milióna odberateľov <span class="text-xs text-neutral-500">(Poznámka: Tento údaj je ilustračný pre túto webovú stránku.)</span></p>
+
+            <p class="text-lg sm:text-2xl text-zinc-400 font-semibold tracking-wide uppercase text-xs">Youtuber, Spevák & DJ</p>
+            
+            <div class="mt-3 inline-block bg-zinc-950 px-4 py-1.5 rounded-full border border-zinc-800/85">
+                <p class="text-sm text-zinc-400">
+                    <span class="text-indigo-400 font-bold">39,2 milióna</span> odberateľov 
+                    <span class="text-xs text-zinc-600 block sm:inline sm:ml-1">(Tento údaj je ilustračný pre túto webovú stránku.)</span>
+                </p>
+            </div>
         </header>
 
-        <!-- About Me Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b-2 border-neutral-600 pb-2">Môj príbeh</h2>
-            <p class="text-neutral-300 leading-relaxed text-base sm:text-lg">
-                Narodil som sa v Spojených štátoch a momentálne žijem na Slovensku, v Myjave. Budúci rok budem mať 21 rokov. Mojou najväčšou vášňou je tvorba obsahu a hudba, a snažím sa splniť si svoj sen ako Youtuber a DJ. Moja cesta nebola vždy ľahká. Ako dieťa z detského domova som mal ťažký osud, ale práve tieto skúsenosti ma posilnili. Každý deň sa snažím osamostatniť a žiť život naplno, rovnako ako ostatní. Mám sestru Kristýnu Starečekovú a brata Stanislava Rapanta.
-            </p>
-        </section>
-
-        <!-- Content Creation Section -->
-        <section class="mb-8">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b-2 border-neutral-600 pb-2">Youtube Kariéra</h2>
-            <p class="text-neutral-300 leading-relaxed text-base sm:text-lg mb-4">
-                Moja skutočná Youtube kariéra sa začala v decembri 2019. Aj keď som už mal za sebou štyri zabanované kanály, nikdy som sa nevzdal. Poučil som sa a teraz sa snažím dodržiavať všetky pravidlá, aby som pre vás mohol tvoriť obsah neustále. Na mojom hlavnom kanáli, kde sa venujem hernému obsahu ako **Roblox** a iné hry, ma poznáte pod prezývkou **KRAL HOROROVIEK**.
-            </p>
-            <p class="text-neutral-300 leading-relaxed text-base sm:text-lg">
-                Okrem hier mám aj hudobný kanál s názvom **GrooveVortex**, kde experimentujem s vlastnou hudbou a hudbou vytvorenou pomocou umelej inteligencie. Hudba je pre mňa formou vyjadrenia a relaxu.
-            </p>
-        </section>
-
-        <!-- Future Goals Section -->
-        <section>
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 border-b-2 border-neutral-600 pb-2">Moje poslanie</h2>
-            <p class="text-neutral-300 leading-relaxed text-base sm:text-lg">
-                Mojím cieľom nie je len baviť ľudí, ale aj ukázať, že každý si môže splniť svoje sny, bez ohľadu na to, odkiaľ pochádza. Chcem byť inšpiráciou pre tých, ktorí prechádzajú ťažkými obdobiami. Mojou prioritou je vytvoriť silnú komunitu fanúšikov, ktorí ma podporujú, a budovať si stabilnú a úspešnú kariéru.
-            </p>
-        </section>
-        
-        <!-- Social Media Buttons -->
-        <div class="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <a href="https://www.youtube.com/@Kralhororoviekmedium00" class="bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105">
-                Youtube: KRAL HOROROVIEK
-            </a>
-            <a href="https://www.youtube.com/@GrooveVortexSK" class="bg-yellow-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-yellow-600 transition-colors duration-300 transform hover:scale-105">
-                Hudobný kanál: GrooveVortex
-            </a>
+        <!-- UPOZORNENIE: Zmazaný kanál KRAL HOROROVIEK -->
+        <div class="mb-8 border-l-4 border-red-500 bg-red-950/20 p-4 rounded-r-2xl border-t border-r border-b border-red-900/30">
+            <div class="flex items-start gap-3">
+                <div class="text-red-500 mt-0.5">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-red-400 font-bold text-base">Upozornenie pre fanúšikov</h3>
+                    <p class="text-sm text-zinc-300 mt-1">
+                        Môj pôvodný herný kanál <strong class="text-red-200">KRAL HOROROVIEK</strong> bol bohužiaľ zmazaný. Nenechajte sa pomýliť prípadnými fiktívnymi profilmi. Aktuálne ma môžete nájsť na mojom jedinom aktívnom hudobnom kanáli nižšie.
+                    </p>
+                </div>
+            </div>
         </div>
+
+        <!-- Bio & Story Section -->
+        <main class="space-y-8">
+            <section class="bg-zinc-950/40 p-6 rounded-2xl border border-zinc-800/50">
+                <h2 class="text-xl sm:text-2xl font-bold mb-3 flex items-center gap-2 text-indigo-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    Môj príbeh
+                </h2>
+                <p class="text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    Narodil som sa v Spojených štátoch a momentálne žijem na Slovensku, v Myjave. <span class="text-purple-400 font-semibold">Budúci rok budem mať 22 rokov.</span> Mojou najväčšou vášňou je tvorba obsahu a hudba, a snažím sa splniť si svoj sen ako Youtuber a DJ. Moja cesta nebola vždy ľahká. Ako dieťa z detského domova som mal ťažký osud, ale práve tieto skúsenosti ma posilnili. Každý deň sa snažím osamostatniť a žiť život naplno, rovnako ako ostatní. Mám sestru Kristýnu Starečekovú a brata Stanislava Rapanta.
+                </p>
+            </section>
+
+            <!-- Youtube Career Section -->
+            <section class="bg-zinc-950/40 p-6 rounded-2xl border border-zinc-800/50">
+                <h2 class="text-xl sm:text-2xl font-bold mb-3 flex items-center gap-2 text-purple-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                    Youtube Kariéra
+                </h2>
+                <p class="text-zinc-300 leading-relaxed text-sm sm:text-base mb-4">
+                    Moja skutočná Youtube kariéra sa začala v decembri 2019. Aj keď som už mal za sebou štyri zabanované kanály, nikdy som sa nevzdal. Poučil som sa a teraz sa snažím dodržiavať všetky pravidlá, aby som pre vás mohol tvoriť obsah neustále. Na mojom hlavnom kanáli, kde sa venujem hernému obsahu ako **Roblox** a iné hry, ma poznáte pod prezývkou **KRAL HOROROVIEK**.
+                </p>
+                <p class="text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    Okrem hier mám aj hudobný kanál s názvom **GrooveVortex**, kde experimentujem s vlastnou hudbou a hudbou vytvorenou pomocou umelej inteligencie. Hudba je pre mňa formou vyjadrenia a relaxu.
+                </p>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="bg-zinc-950/40 p-6 rounded-2xl border border-zinc-800/50">
+                <h2 class="text-xl sm:text-2xl font-bold mb-3 flex items-center gap-2 text-pink-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Moje poslanie
+                </h2>
+                <p class="text-zinc-300 leading-relaxed text-sm sm:text-base">
+                    Mojím cieľom nie je len baviť ľudí, ale aj ukázať, že každý si môže splniť svoje sny, bez ohľadu na to, odkiaľ pochádza. Chcem byť inšpiráciou pre tých, ktorí prechádzajú ťažkými obdobiami. Mojou prioritou je vytvoriť silnú komunitu fanúšikov, ktorí ma podporujú, a budovať si stabilnú a úspešnú kariéru.
+                </p>
+            </section>
+        </main>
+
+        <!-- Social Links & Action -->
+        <footer class="mt-10 pt-8 border-t border-zinc-800/80 flex flex-col items-center">
+            <h3 class="text-sm font-semibold text-zinc-500 uppercase tracking-widest mb-4">Sleduj ma na YouTube</h3>
+            
+            <a href="https://www.youtube.com/@GrooveVortexSK" target="_blank" class="w-full sm:w-auto relative group inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-bold text-white rounded-full group bg-gradient-to-br from-purple-600 to-pink-500 group-hover:from-purple-600 group-hover:to-pink-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-purple-800 transition-all duration-300 transform hover:scale-105 shadow-xl shadow-purple-900/40 animate-pulse-slow">
+                <span class="w-full sm:w-auto px-8 py-4 transition-all ease-in duration-75 bg-zinc-950 rounded-full group-hover:bg-opacity-0 flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6 text-pink-500 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.163c-.272-1.022-1.074-1.826-2.094-2.102C19.537 3.5 12 3.5 12 3.5s-7.537 0-9.404.561C1.576 4.337.772 5.141.5 6.163.153 8.04.153 12 .153 12s0 3.96.347 5.837c.272 1.022 1.074 1.826 2.094 2.102 1.867.562 9.404.562 9.404.562s7.537 0 9.404-.562c1.02-2.76 1.822-1.08 2.094-2.102.347-1.877.347-5.837.347-5.837s0-3.96-.347-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Hudobný kanál: GrooveVortex
+                </span>
+            </a>
+            
+            <p class="text-xs text-zinc-600 mt-4">© <script>document.write(new Date().getFullYear())</script> Kristian Stareček. Všetky práva vyhradené.</p>
+        </footer>
         
     </div>
+
 </body>
 </html>
 
